@@ -1,7 +1,7 @@
 #'
-#' @title run_app
+#' run_app
 #'
-#' @description A function to run the web app
+#' @description A function that runs the web app
 #'
 #' @include shallow_ping.R
 #' @include deep_ping.R
