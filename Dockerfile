@@ -9,7 +9,7 @@ RUN apt-get update -qq && apt-get -y --no-install-recommends install \
     libxml2-dev \
     libcairo2-dev \
     libsqlite3-dev \
-    libmariabd-dev \
+    libmariadb-dev \
     libpq-dev \
     libssh2-1-dev \
     libcurl4-openssl-dev \
