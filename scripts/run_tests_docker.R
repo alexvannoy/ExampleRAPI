@@ -1,5 +1,5 @@
 reporters <- c(
-  testthat::JunitReporter$new(file = "./scripts/results/report.xml"),
+  testthat::JunitReporter$new(file = file.path(usethis::proj_get(), "scripts", "results", "report.xml")),
   testthat::ProgressReporter$new(),
   testthat::FailReporter$new()
 )
@@ -11,10 +11,12 @@ devtools::test(
   stop_on_failure = TRUE
 )
 
-cov <- devtools::test_coverage(
-  show_report = FALSE,
-  quiet = TRUE
+cov <- covr::package_coverage(
+  path = file.path(usethis::proj_get()),
+  type = "tests",
+  quiet = FALSE,
+  clean = FALSE,
 )
 
-covr::report(x = cov, file = "./scripts/results/covr.html", browse = FALSE)
+covr::report(x = cov, file = file.path(usethis::proj_get(), "scripts", "results", "covr.html"), browse = FALSE)
 

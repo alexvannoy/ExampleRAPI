@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: r-webapp
+spec:
+  selector:
+    matchLabels:
+      app: r-webapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: r-webapp
+    spec:
+      containers:
+      - name: r-webapp
+        image: avannoy/r-webapp:0.0.1-buildx
+        ports:
+          - name: http
+            containerPort: 8080
+            protocol: TCP
+        # Per pod resources. Just up the replicas
+        resources:
+          limits:
+            cpu: 1
+            memory: 1Gi
+      imagePullSecrets:
+        - name: regcred

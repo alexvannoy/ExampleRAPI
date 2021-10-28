@@ -1,5 +1,5 @@
 ARG build
-FROM r-base-with-packages:${build} as base
+FROM docker.io/avannoy/r-base-with-packages:${build}-buildx as base
 LABEL image=base
 # Copy the directory into the base image
 WORKDIR /
@@ -16,9 +16,9 @@ RUN mkdir man \
   && R CMD INSTALL ExampleRAPI_*.tar.gz
 
 # Test the R package
-FROM base as test
+FROM prerelease as test
 LABEL image=test
-RUN mkdir scripts/results && (Rscript inst/server.R &) && sleep 2 && Rscript scripts/run_tests_docker.R
+RUN mkdir ./scripts/results && (Rscript ./inst/server.R &) && sleep 2 && Rscript scripts/run_tests_docker.R
 
 # Create the release image
 FROM prerelease as release

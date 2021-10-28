@@ -2,3 +2,7 @@
 ^\.Rproj\.user$
 ^\.dockerignore
 ^\.github
+
+# Ignore kubernetes directory
+^\Kubernetes
+^Dockerfile

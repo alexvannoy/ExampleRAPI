@@ -4,7 +4,6 @@
 .RData
 .Ruserdata
 man
-*.tar.gz
 **/*.Rcheck
 
 #Ignore .git things
