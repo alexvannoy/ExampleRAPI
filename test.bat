@@ -3,23 +3,18 @@ SET CMD=%1
 
 IF "%1" == "" (
   ECHO Valid commands:
-  ECHO install-packages: re-builds the base image with additional packages
   ECHO build: builds the docker image as tag r-webapp:dev
   ECHO run-bash: runs the dev image with bash as the entrypoint
   ECHO web-app: build the docker image as :dev-api, then runs the image
 )
 
-if "%1" == "install-packages" (
-  docker build -f Init.Dockerfile . -t r-base-with-packages:4.1.0
-)
-
 if "%1" == "build" (
-  docker build --build-arg build=4.1.0 . -t r-webapp:dev
+  docker build --build-arg rversion=4.1.0 . -t r-webapp:dev
 )
 
 if "%1" == "run-bash" (
-  docker build --build-arg build=4.1.0 . -t r-webapp:dev
-  docker run -it --entrypoint=/bin/bash -it r-webapp:dev
+  docker build --build-arg rversion=4.1.0 . -t r-webapp:dev
+  docker run --entrypoint=/bin/bash -it r-webapp:dev
 )
 
 if "%1" == "web-app" (
@@ -27,7 +22,7 @@ if "%1" == "web-app" (
   docker container rm run-r-webapp
   docker image prune
   ECHO ON
-  docker build --build-arg build=4.1.0 . -t docker.io/library/r-webapp:dev
+  docker build --build-arg rversion=4.1.0 . -t docker.io/library/r-webapp:dev
   docker run -p 8080:8080 -it --name run-r-webapp docker.io/library/r-webapp:dev
   EXIT /B 0
 )
