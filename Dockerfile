@@ -22,8 +22,10 @@ RUN apt-get update && \
   
 # Install pinned versions of R package dependencies
 RUN Rscript -e "install.packages("remotes") \
+  && Rscript -e "remotes::install_version('jsonlite', '1.7.2')" \
   && Rscript -e "remotes::install_version('R.utils', '2.10.1')" \
   && Rscript -e "remotes::install_version('usethis', '2.0.1')" \
+  && Rscript -e "remotes::install_version('testthat', '3.0.2')" \
   && Rscript -e "devtools::install_github('dselivanov/RestRserve@v0.4.1')"
 
 # Copy the directory into the base image
