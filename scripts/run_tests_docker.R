@@ -1,3 +1,4 @@
+
 reporters <- c(
   testthat::JunitReporter$new(file = "./scripts/results/report.xml"),
   testthat::ProgressReporter$new(),
