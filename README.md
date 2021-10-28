@@ -1,1 +1,16 @@
 # ExampleRAPI
+This is primarily an R repo that holds a tiny R web-app to be used in my Kubernetes learning experience. However, it should also function as a passable template for other R web services.
+
+#test.bat
+## install-packages
+Running `test install-packages` will create a base image named `r-base-with-packages:4.1.0` that is built off `rocker/r-base:4.1.0`. In the event one needs to add additional packages to the docker image, do so in the `Init.Dockerfile` and you can get around lengthy build times for the actual web application.
+
+## build
+Running `test build` will build the image `r-webapp:dev` that houses the web-app.
+
+## run-bash
+Running `test run-bash` will build the image `r-webapp:dev` with a bash entrypoint to help debug internal issues
+
+## test web-app
+Running `test web-app` will build the image `run-r-webapp` that runs the web app on `localhost:8080`. The actual route is set to `localhost:8080/api` but that's set in the run_app.R function when the `add_swagger_ui()` path is assigned.
+

@@ -19,6 +19,7 @@ Imports:
   jsonlite (>= 1.7.2),
   usethis (>= 2.0.1),
 Suggests:
+  devtools (>= 2.4.1),
   testthat (>= 3.0.2),
 Collate: 
     'deep_ping.R'
