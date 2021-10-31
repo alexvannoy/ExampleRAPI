@@ -19,4 +19,5 @@ A dummy script that builds and pushes the docker image to my docker repository. 
 - Add whatever functions and stuff you need in `/R/`
 - Add any endpoint handlers to `/R/run_app`
 - Change the name of the package if you want, but that changes in a lot of places, so good luck.
-
+- If you use `buildme.sh`, you'll need to change the `docker.io` repo. 
+  - You'll also need to have valid cached creds for that, to run.
