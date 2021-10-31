@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # parse_yaml function from https://gist.github.com/pkuczynski/8665367
-function parse_yaml {
+function parse_yaml() {
   local prefix=$2
   local s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
   sed -ne "s|^\($s\):|\1|" \

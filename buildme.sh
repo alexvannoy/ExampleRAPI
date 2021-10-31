@@ -29,15 +29,20 @@ done
 # Set default R-version
 if [[ -z "$rversion" ]]; then
   rversion=4.1.0
+fi
 
 # Set default docker image version pin
 if [[ -z "$version" ]]; then
   # read yaml file
   eval $(parse_yaml DESCRIPTION "config_")
   version=config_Version
+fi
 
 # Build docker image & push to repo
 docker build --build-arg rversion=$rversion . -t "aavannoy/r-webapp:$version"
+# This abuses the fact that I'm already logged in.
+docker login
+# NOTE: This obviously won't work for anyone else.
 docker push "aavannoy/r-webapp:$version"
 
 exit 0
