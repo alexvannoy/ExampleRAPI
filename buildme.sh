@@ -43,6 +43,6 @@ fi
 docker login
 # Build docker image & push to repo
 # NOTE: This obviously won't work for anyone else.
-docker buildx build --build-arg rversion=$rversion . -t "aavannoy/r-webapp:$version" --push
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 --build-arg rversion=$rversion . -t "aavannoy/r-webapp:$version" --push
 
 exit 0
