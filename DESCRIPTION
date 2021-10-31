@@ -1,6 +1,6 @@
 Package: ExampleRAPI
 Title: A small example R web application
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person(given = "Alex",
            family = "Vannoy",
