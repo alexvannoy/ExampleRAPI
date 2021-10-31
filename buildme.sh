@@ -5,8 +5,8 @@ function usage(){
     cat <<EOF
     Usage: A script to build the docker image and push to public docker.io repository
     
-    -r: The version of R to user when building the docker image
-    -v: The version of the package to pin to the docker image
+    -r: The version of R to use when building the docker image. Uses 4.1.0 by default.
+    -v: The version of the package to pin to the docker image. Uses the Version value from the DESCRIPTION file by default.
     -h: Print this help documentation
     
 EOF
