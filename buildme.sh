@@ -30,14 +30,15 @@ done
 if [[ -z "$rversion" ]]; then
   rversion=4.1.0
 fi
+echo "Using R-version $rversion"
 
 # Set default docker image version pin
 if [[ -z "$version" ]]; then
   # read yaml file
   eval $(parse_yaml DESCRIPTION "config_")
   version="${config_Version/$'\r'/}"
-  echo $version
 fi
+echo "Tagging image as version $version"
 
 # This abuses the fact that I'm already logged in.
 docker login
