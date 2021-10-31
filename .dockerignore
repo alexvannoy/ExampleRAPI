@@ -18,3 +18,8 @@ man
 
 #Ignore IntelliJ files
 .idea
+
+#Ignore the buildme.sh and parse_yaml.sh files
+buildme.sh
+parse_yaml.sh
+

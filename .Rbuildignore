@@ -2,3 +2,10 @@
 ^\.Rproj\.user$
 ^\.dockerignore
 ^\.github
+
+#Ignore non-standard R package files
+buildme.sh
+parse_yaml.sh
+Dockerfile
+scripts/
+test.bat
