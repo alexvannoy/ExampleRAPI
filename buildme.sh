@@ -30,7 +30,7 @@ done
 if [[ -z "$rversion" ]]; then
   rversion=4.1.0
 fi
-echo "Using R-version $rversion"
+echo "Building image with R-version $rversion"
 
 # Set default docker image version pin
 if [[ -z "$version" ]]; then
