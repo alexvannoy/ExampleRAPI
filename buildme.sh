@@ -35,14 +35,14 @@ fi
 if [[ -z "$version" ]]; then
   # read yaml file
   eval $(parse_yaml DESCRIPTION "config_")
-  version=config_Version
+  version="${config_Version/$'\r'/}"
+  echo $version
 fi
 
-# Build docker image & push to repo
-docker build --build-arg rversion=$rversion . -t "aavannoy/r-webapp:$version"
 # This abuses the fact that I'm already logged in.
 docker login
+# Build docker image & push to repo
 # NOTE: This obviously won't work for anyone else.
-docker push "aavannoy/r-webapp:$version"
+docker buildx build --build-arg rversion=$rversion . -t "aavannoy/r-webapp:$version" --push
 
 exit 0
