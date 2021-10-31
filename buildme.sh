@@ -7,7 +7,7 @@ function usage(){
     
     -r: The version of R to use when building the docker image. Uses 4.1.0 by default.
     -v: The version of the package to pin to the docker image. Uses the Version value from the DESCRIPTION file by default.
-    -h: Print this help documentation
+    -h: Print this help documentation.
     
 EOF
 }
