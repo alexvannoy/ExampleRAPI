@@ -40,7 +40,7 @@ RUN mkdir scripts/results && (Rscript inst/server.R &) && sleep 2 && Rscript scr
 
 # Install the R package
 FROM base as prerelease
-label image=prerelease
+LABEL image=prerelease
 RUN mkdir man \
   && Rscript -e 'devtools::document(roclets = c("rd", "collate", "namespace"))' \
   && R CMD build . \
