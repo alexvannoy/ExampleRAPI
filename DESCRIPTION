@@ -15,6 +15,7 @@ RoxygenNote: 7.1.2
 Remotes:
   dselivanov/RestRserve,
 Imports: 
+  Rserve (>=1.8-8),
   RestRserve (>= 0.4.1),
   jsonlite (>= 1.7.2),
   usethis (>= 2.0.1),
