@@ -65,12 +65,9 @@ jobs:
       - name: Try to find openssl on windows box... 
         if: runner.os == 'Windows'
         run: |
-          openssl version
+          openssl version -d
           echo %Path%
-          ls %SYSTEMROOT%\System32\
-          ls %SYSTEMROOT%\
-          ls C:\OpenSSL-Win64\bin\
-      
+
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
