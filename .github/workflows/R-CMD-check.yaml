@@ -64,7 +64,7 @@ jobs:
 
       - name: Find Openssl
         run: |
-          echo ls /user/ssl
+          ls /user/ssl
 
       - name: Install dependencies
         env:
