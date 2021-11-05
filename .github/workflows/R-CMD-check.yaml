@@ -23,8 +23,8 @@ jobs:
       matrix:
         config:
           - {os: windows-latest, r: '4.1.0'}
-          #- {os: macOS-latest, r: '4.1.0'}
-          #- {os: ubuntu-20.04, r: '4.1.0'}
+          - {os: macOS-latest, r: '4.1.0'}
+          - {os: ubuntu-20.04, r: '4.1.0'}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -62,20 +62,10 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
 
-      - name: Find openssl on Windows
-        if: runner.os == 'Windows'
-        run: |
-          openssl version -d
-
       - name: Install dependencies
         env:
           OPENSSL_PATH: "/usr/ssl"
         run: |
-          # TODO: Migrate left
-          sysinfo <- Sys.info()
-          if (sysinfo['sysname'] == "Windows") {
-            Sys.setenv("OPENSSLDIR" = Sys.getenv("OPENSSL_PATH"))
-          }
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck", "devtools")
         shell: Rscript {0}
