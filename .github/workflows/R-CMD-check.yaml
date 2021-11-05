@@ -74,7 +74,7 @@ jobs:
           # TODO: Migrate left
           sysinfo <- Sys.info()
           if (sysinfo['sysname'] == "Windows") {
-            Sys.setenv("OPENSSLDIR" = )
+            Sys.setenv("OPENSSLDIR" = Sys.getenv("OPENSSL_PATH"))
           }
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck", "devtools")
