@@ -62,14 +62,14 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
 
-      - name: Try to find openssl on windows box... 
-        if: runner.os == 'Windows'
-        run: |
-          openssl version -d
-          echo %Path%
-
       - name: Install dependencies
+        env:
+          OPENSSL_PATH: "/usr/ssl"
         run: |
+          # TODO: Migrate left
+          if (Sys.info$sysname == "Windows") {
+            Sys.setenv("OPENSSLDIR" = "/usr/ssl")
+          }
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck", "devtools")
         shell: Rscript {0}
