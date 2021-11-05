@@ -23,8 +23,8 @@ jobs:
       matrix:
         config:
           - {os: windows-latest, r: '4.1.0'}
-          - {os: macOS-latest, r: '4.1.0'}
-          - {os: ubuntu-20.04, r: '4.1.0'}
+          #- {os: macOS-latest, r: '4.1.0'}
+          #- {os: ubuntu-20.04, r: '4.1.0'}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
