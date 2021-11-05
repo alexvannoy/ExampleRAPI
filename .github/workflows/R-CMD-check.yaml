@@ -64,7 +64,7 @@ jobs:
 
       - name: Find Openssl
         run: |
-          ls /user/ssl
+          ls /usr/ssl
 
       - name: Install dependencies
         env:
