@@ -42,9 +42,9 @@ jobs:
 
       - uses: msys2/setup-msys2@v2
         if: runner.os == 'Windows'
-          with:
-            msystem: ${{ matrix.msystem }}
-            install: make
+        with:
+          msystem: ${{ matrix.msystem }}
+          install: make
       
       - name: Install openssl for Rtools
         run: pacman --noconfirm -S openssl
