@@ -23,8 +23,8 @@ jobs:
       matrix:
         config:
           - {os: windows-latest, r: '4.1.0'}
-          - {os: macOS-latest, r: '4.1.0'}
-          - {os: ubuntu-20.04, r: '4.1.0'}
+          # - {os: macOS-latest, r: '4.1.0'}
+          # - {os: ubuntu-20.04, r: '4.1.0'}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -62,9 +62,13 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
 
+      - name: Install Rtools dependencies
+        if: runner.os == 'Windows'
+        run: |
+          pacman -Sy
+          pacman -S  mingw-w64-{i686,x86_64}-openssl
+
       - name: Install dependencies
-        env:
-          OPENSSL_PATH: "/usr/ssl"
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck", "devtools")
