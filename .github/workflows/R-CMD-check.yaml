@@ -67,6 +67,7 @@ jobs:
         run: |
           pacman -Sy
           pacman -S  mingw-w64-{i686,x86_64}-openssl
+        shell: msys2 {0}
 
       - name: Install dependencies
         run: |
