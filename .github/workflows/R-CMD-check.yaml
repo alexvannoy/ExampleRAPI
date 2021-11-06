@@ -25,6 +25,7 @@ jobs:
           - {os: windows-latest, r: '4.1.0'}
           # - {os: macOS-latest, r: '4.1.0'}
           # - {os: ubuntu-20.04, r: '4.1.0'}
+        msystem: [MINGW32, MINGW64]
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -38,6 +39,18 @@ jobs:
           r-version: ${{ matrix.config.r }}
 
       - uses: r-lib/actions/setup-pandoc@v1
+
+      - uses: msys2/setup-msys2@v2
+        if: runner.os == 'Windows'
+          with:
+            msystem: ${{ matrix.msystem }}
+            install: make
+      
+      - name: Install openssl for Rtools
+        run: pacman --noconfirm -S openssl
+        if: runner.os == 'Windows'
+        shell: msys2 {0}
+
 
       - name: Query dependencies
         run: |
@@ -61,13 +74,6 @@ jobs:
           do
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
-
-      - name: Install Rtools dependencies
-        if: runner.os == 'Windows'
-        run: |
-          pacman -Sy
-          pacman -S  mingw-w64-{i686,x86_64}-openssl
-        shell: msys2 {0}
 
       - name: Install dependencies
         run: |
