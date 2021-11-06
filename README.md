@@ -1,7 +1,7 @@
 # ExampleRAPI
 This is primarily an R repo that holds a tiny R web-app to be used in my Kubernetes learning experience. However, it should also function as a passable template for other R web services.
 
-#test.bat
+# test.bat
 Note: This isn't set up to run out-of-the-box with `docker buildx`. This is just for local dev work on a windows box. It wouldn't take a much effort to implement, but this is primarily for the quick-n-dirty, first pass type of build.
 
 ## build
