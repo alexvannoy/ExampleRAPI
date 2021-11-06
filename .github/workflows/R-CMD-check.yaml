@@ -25,7 +25,6 @@ jobs:
           - {os: windows-latest, r: '4.1.0'}
           # - {os: macOS-latest, r: '4.1.0'}
           # - {os: ubuntu-20.04, r: '4.1.0'}
-        msystem: [MINGW32, MINGW64]
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -43,7 +42,6 @@ jobs:
       - uses: msys2/setup-msys2@v2
         if: runner.os == 'Windows'
         with:
-          msystem: ${{ matrix.msystem }}
           install: make
       
       - name: Install openssl for Rtools
