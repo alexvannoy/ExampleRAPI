@@ -1,0 +1,4 @@
+imageRegistry: "avannoy"
+dockerTag: "latest"
+pullPolicy: "Always"
+storage: "s3"

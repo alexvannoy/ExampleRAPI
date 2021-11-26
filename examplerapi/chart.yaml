@@ -1,0 +1,15 @@
+# See docs: https://helm.sh/docs/topics/charts/
+apiVersion: v2
+name: examplerapi
+version: "4.1.0"
+description: A trivial R API to serve as a template project
+type: application
+keywords:
+  - template
+sources:
+  - https://github.com/alexvannoy/ExampleRAPI
+maintainers: 
+  - name: Alex Vannoy
+appVersion: "1.0.0"
+annotations:
+  example: A list of annotations keyed by name (optional).
